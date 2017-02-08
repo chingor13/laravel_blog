@@ -1,13 +1,11 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Blog</title>
-    </head>
-    <body>
-        <h1>{{ $post->title }}</h1>
+@extends ('layouts.master')
 
-        <p>
-            {{ $post->body }}
-        </p>
-    </body>
-</html>
+@section ('content')
+
+<h1>{{ $post->title }}</h1>
+
+<p>
+    {{ $post->body }}
+</p>
+
+@endsection

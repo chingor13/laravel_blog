@@ -11,18 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome', [
-        'name' => 'World'
-    ]);
-});
+Route::get('/', 'PostsController@index');
 
-Route::get('/posts/{id}', function($id) {
-    $post = DB::table('posts')->find($id);
-    return view('posts.show', compact('post'));
-});
-
-Route::get('/posts', function() {
-    $posts = DB::table('posts')->latest()->get();
-    return view('posts.index', compact('posts'));
-});
+Route::get('/posts/{post}', 'PostsController@show');

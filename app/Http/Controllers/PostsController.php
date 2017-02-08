@@ -25,6 +25,11 @@ class PostsController extends Controller
 
     public function store()
     {
+        $this->validate(request(), [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
         $permalink = preg_replace('/\W/', '-', request('title'));
         $post = Post::create([
             'title' => request('title'),

@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'name' => 'World'
+    ]);
+});
+
+Route::get('/about', function() {
+    return view('about');
 });

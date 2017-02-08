@@ -13,12 +13,25 @@ class PostsController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function show(Post $post) {
-        // $post = Post::find($id);
+    public function show(Post $post)
+    {
         return view('posts.show', compact('post'));
     }
 
-    public function new() {
-        return view('posts.new');
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store()
+    {
+        $permalink = preg_replace('/\W/', '-', request('title'));
+        $post = Post::create([
+            'title' => request('title'),
+            'body' => request('body'),
+            'permalink' => $permalink
+        ]);
+
+        return redirect("/posts/{$post->permalink}");
     }
 }

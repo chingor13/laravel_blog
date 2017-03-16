@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b48171b1a9d775f7fd00f1f694e3b063",
+    "content-hash": "8b50aebef39c7fc49ce81a67fa3adf71",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -241,12 +241,11 @@
         },
         {
             "name": "google/cloud",
-            "version": "dev-trace_only_api",
-            "dist": {
-                "type": "path",
-                "url": "/usr/local/google/home/chingor/php/google-cloud-php",
-                "reference": "6c2892c548ab1effeba2424267777cc49bc9a0b5",
-                "shasum": null
+            "version": "dev-request_tracing",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chingor13/google-cloud-php",
+                "reference": "a8e7606867a4ee5f6a7e60472a3efdb168dac020"
             },
             "require": {
                 "google/auth": "^0.11",
@@ -275,6 +274,14 @@
                 "james-heinrich/getid3": "Allows the Google Cloud Speech client to determine sample rate and encoding of audio inputs"
             },
             "type": "library",
+            "extra": {
+                "component": {
+                    "id": "google-cloud",
+                    "target": "git@github.com:jdpedrie-gcp/google-cloud-php.git",
+                    "path": "src",
+                    "entry": "ServiceBuilder.php"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Google\\Cloud\\": "src"
@@ -328,7 +335,8 @@
                 "translate",
                 "translation",
                 "vision"
-            ]
+            ],
+            "time": "2017-03-16 17:30:36"
         },
         {
             "name": "guzzlehttp/guzzle",

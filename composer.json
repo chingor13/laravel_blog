@@ -8,7 +8,7 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "google/cloud": "dev-trace_only_api"
+        "google/cloud": "dev-request_tracing"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -17,8 +17,8 @@
     },
     "repositories": [
         {
-            "type": "path",
-            "url": "~/php/google-cloud-php"
+            "type": "git",
+            "url": "https://github.com/chingor13/google-cloud-php"
         }
     ],
     "autoload": {

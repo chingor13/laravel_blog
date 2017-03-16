@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Google\Cloud\Trace\RequestTracer;
 
 class PostsController extends Controller
 {
@@ -14,8 +15,12 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->get();
-        return view('posts.index', compact('posts'));
+        $posts = RequestTracer::instrument(['name' => 'db/posts/latest'], function() {
+            return Post::latest()->get();
+        });
+        return RequestTracer::instrument(['name' => 'view'], function () use ($posts) {
+            return view('posts.index', compact('posts'));
+        });
     }
 
     public function show(Post $post)

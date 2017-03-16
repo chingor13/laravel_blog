@@ -20,7 +20,11 @@ class GoogleCloudProvider extends ServiceProvider
     {
         $trace = $builder->trace();
         $reporter = new TraceReporter($trace);
-        RequestTracer::start($reporter, ['enabled' => true]);
+
+        // don't trace if we're running in the console (i.e. a php artisan command)
+        if (php_sapi_name() != 'cli') {
+            RequestTracer::start($reporter, ['enabled' => true, 'startTime' => LARAVEL_START]);
+        }
     }
 
     /**
